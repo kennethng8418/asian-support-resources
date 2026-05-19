@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NYC Asian Mental Health Directory</title>
+<meta name="description" content="A directory of nonprofit mental health and behavioral health resources for Asian communities in New York City." />
+<style>
+  :root {
+    --bg: #fdf8f3;
+    --surface: #ffffff;
+    --ink: #2d2420;
+    --ink-soft: #5c4f48;
+    --accent: #c97064;
+    --accent-soft: #f4dcd6;
+    --border: #ebe0d6;
+    --crisis-bg: #fff4e6;
+    --crisis-border: #e8a05c;
+    --crisis-ink: #7a4410;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  .crisis-banner {
+    background: var(--crisis-bg);
+    border-bottom: 2px solid var(--crisis-border);
+    color: var(--crisis-ink);
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  .crisis-banner strong { font-weight: 700; }
+  .crisis-banner a { color: var(--crisis-ink); font-weight: 700; }
+
+  header { padding: 48px 0 32px; text-align: center; }
+  h1 { font-size: 2.2rem; margin: 0 0 12px; color: var(--ink); letter-spacing: -0.5px; }
+  .subtitle { color: var(--ink-soft); max-width: 620px; margin: 0 auto; font-size: 1.05rem; }
+
+  .controls {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  .search-wrap { margin-bottom: 14px; }
+  .search-wrap input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-wrap input:focus { border-color: var(--accent); }
+
+  .filter-wrap { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .filter-label { font-size: 0.9rem; color: var(--ink-soft); margin-right: 4px; width: 100%; margin-bottom: 4px; }
+  .pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .pill:hover { border-color: var(--accent); color: var(--ink); }
+  .pill.active { background: var(--accent); border-color: var(--accent); color: white; }
+
+  .results-count { color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 16px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(45, 36, 32, 0.08); }
+  .card h3 { margin: 0 0 10px; font-size: 1.1rem; color: var(--ink); }
+  .card .community {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .card .field { font-size: 0.9rem; margin: 8px 0; color: var(--ink-soft); }
+  .card .field strong { color: var(--ink); font-weight: 600; }
+  .card .services { font-size: 0.92rem; color: var(--ink); margin: 12px 0; }
+  .card a.website {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+  }
+  .card a.website:hover { text-decoration: underline; }
+
+  .empty { text-align: center; padding: 60px 20px; color: var(--ink-soft); }
+
+  footer {
+    margin-top: 60px;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+  }
+  footer a { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 1.6rem; }
+    .controls { padding: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="crisis-banner">
+  <strong>In crisis?</strong> Call or text <a href="tel:988">988</a> (Suicide & Crisis Lifeline, free 24/7, language services available)
+  · NYC: call <a href="tel:8886927753">NYC Well 1-888-NYC-WELL</a>
+</div>
+
+<header>
+  <div class="container">
+    <h1>NYC Asian Mental Health Directory</h1>
+    <p class="subtitle">A community-maintained list of nonprofit mental health and behavioral health resources serving Asian communities in New York City.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="controls">
+    <div class="search-wrap">
+      <input type="search" id="search" placeholder="Search by name, service, or community…" aria-label="Search organizations" />
+    </div>
+    <div class="filter-wrap" id="filters">
+      <span class="filter-label">Filter by language:</span>
+    </div>
+  </div>
+
+  <div class="results-count" id="count"></div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none;">No organizations match your search. Try clearing filters.</div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>This directory is for informational purposes only and is not a substitute for professional medical or mental health care. Please verify details directly with each organization before reaching out.</p>
+    <p>Suggest an edit or addition: <a href="https://github.com/YOUR-USERNAME/nyc-asian-mh-directory" target="_blank" rel="noopener">contribute on GitHub</a></p>
+    <p style="margin-top:16px;font-size:0.8rem;">Last updated: May 2026</p>
+  </div>
+</footer>
+
+<script>
+const organizations = [
+  { name: "Hamilton-Madison House (Behavioral Health)", community: "Pan-Asian / AAPI", location: "Lower East Side, Manhattan", services: "Licensed outpatient mental health clinic; East Coast's largest specializing in Asian American community; culturally competent therapy & psychiatry.", languages: ["English", "Mandarin", "Cantonese", "Japanese", "Korean", "Vietnamese", "Russian", "Spanish", "Ukrainian"], website: "https://hamiltonmadisonhouse.org" },
+  { name: "Charles B. Wang Community Health Center", community: "Pan-Asian (primarily Chinese)", location: "Manhattan Chinatown; Flushing, Queens", services: "Mental health integrated with primary care at FQHC; sliding fee scale.", languages: ["English", "Chinese"], website: "https://www.cbwchc.org" },
+  { name: "Apicha Community Health Center", community: "Asian, Pacific Islander, people of color; LGBTQ+ focus", location: "Manhattan", services: "FQHC offering mental health, primary care, HIV services, supportive services.", languages: ["English", "Mandarin", "Cantonese", "Spanish"], website: "https://www.apicha.org" },
+  { name: "Garden of Hope", community: "Chinese-speaking", location: "Queens, Manhattan, Brooklyn", services: "Counseling and mental health support for survivors of domestic violence, sexual assault, and human trafficking.", languages: ["English", "Mandarin", "Cantonese"], website: "https://www.gohny.org" },
+  { name: "Chinese-American Planning Council (CPC)", community: "Chinese American", location: "Manhattan, Brooklyn, Queens", services: "Social services with mental health and wellness programs; senior and youth programming.", languages: ["English", "Mandarin", "Cantonese"], website: "https://www.cpc-nyc.org" },
+  { name: "Womankind (formerly New York Asian Women's Center)", community: "Pan-Asian (gender-based violence survivors)", location: "Multiple boroughs", services: "Mental health counseling and trauma services for survivors of gender-based violence.", languages: ["English", "Mandarin", "Cantonese", "Korean", "Japanese", "Bengali", "Hindi", "Urdu", "Thai", "Vietnamese"], website: "https://www.iamwomankind.org" },
+  { name: "Korean American Family Service Center (KAFSC)", community: "Korean American", location: "Flushing, Queens", services: "Counseling, mental health, and domestic violence services; youth and family programs.", languages: ["English", "Korean"], website: "https://www.kafsc.org" },
+  { name: "Korean Community Services of Metropolitan NY (KCS)", community: "Korean American", location: "Queens (Flushing, Bayside) and Manhattan", services: "Mental health clinic, senior services, public health programs.", languages: ["English", "Korean"], website: "https://www.kcsny.org" },
+  { name: "Sakhi for South Asian Survivors", community: "South Asian", location: "NYC-wide", services: "Counseling and mental health support for South Asian survivors of gender-based violence.", languages: ["English", "Hindi", "Urdu", "Bengali", "Punjabi", "Tamil", "Telugu", "Gujarati"], website: "https://www.sakhi.org" },
+  { name: "South Asian Council for Social Services (SACSS)", community: "South Asian", location: "Queens", services: "Social services including mental health referrals and wellness programs.", languages: ["English", "Hindi", "Urdu", "Bengali", "Punjabi", "Nepali"], website: "https://www.sacssny.org" },
+  { name: "The Child Center of NY — Asian Outreach Program (APOP)", community: "Asian children & families", location: "Queens", services: "Mental health and substance abuse services for Asian youth and families.", languages: ["English", "Mandarin", "Cantonese", "Korean", "Bengali", "Hindi"], website: "https://childcenterny.org" },
+  { name: "Damayan Migrant Workers Association", community: "Filipino", location: "NYC-wide", services: "Wellness, peer support, and trafficking survivor support.", languages: ["English", "Tagalog"], website: "https://www.damayanmigrants.org" },
+  { name: "National Queer Asian Pacific Islander Alliance (NQAPIA)", community: "LGBTQ+ Asian / Pacific Islander", location: "National with NYC presence", services: "Advocacy and resource connection for LGBTQ+ AAPI individuals.", languages: ["English"], website: "https://www.nqapia.org" },
+  { name: "Asian Mental Health Collective", community: "Pan-Asian", location: "National (with NYC therapist directory)", services: "Therapist directory, peer programs, community support.", languages: ["American Sign Language (ASL)", "Arabic", "Armenian", "Bengali", "Burmese", "Cambodian", "Cantonese", "English", "Farsi", "Filipino", "French", "Gujarati", "Hindi", "Hmong", "Indonesian", "Japanese", "Korean", "Malay", "Mandarin", "Mongolian", "Punjabi", "Russian", "Sinhalese", "Spanish", "Tamil", "Telugu", "Teochew", "Thai", "Turkish", "Ukrainian", "Urdu", "Vietnamese"], website: "https://www.asianmhc.org" }
+];
+
+// Build sorted list of unique languages, with English first, "Other Asian languages" last
+const languageOrder = ["English", "Mandarin", "Cantonese", "Teochew", "Chinese", "Korean", "Japanese", "Mongolian", "Vietnamese", "Khmer", "Cambodian", "Thai", "Burmese", "Hmong", "Tagalog", "Filipino", "Indonesian", "Malay", "Hindi", "Urdu", "Bengali", "Punjabi", "Tamil", "Telugu", "Gujarati", "Sinhalese", "Nepali", "Other Asian languages"];
+const allLanguagesSet = new Set();
+organizations.forEach(o => o.languages.forEach(l => allLanguagesSet.add(l)));
+const languages = ["All", ...languageOrder.filter(l => allLanguagesSet.has(l))];
+
+let activeLanguage = "All";
+let activeSearch = "";
+
+const filtersEl = document.getElementById("filters");
+const gridEl = document.getElementById("grid");
+const countEl = document.getElementById("count");
+const emptyEl = document.getElementById("empty");
+const searchEl = document.getElementById("search");
+
+languages.forEach(l => {
+  const pill = document.createElement("button");
+  pill.className = "pill" + (l === "All" ? " active" : "");
+  pill.textContent = l;
+  pill.dataset.language = l;
+  pill.addEventListener("click", () => {
+    activeLanguage = l;
+    document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+    pill.classList.add("active");
+    render();
+  });
+  filtersEl.appendChild(pill);
+});
+
+searchEl.addEventListener("input", e => {
+  activeSearch = e.target.value.toLowerCase().trim();
+  render();
+});
+
+function render() {
+  const filtered = organizations.filter(o => {
+    const matchesLanguage = activeLanguage === "All" || o.languages.includes(activeLanguage);
+    const haystack = (o.name + " " + o.services + " " + o.languages.join(" ") + " " + o.location + " " + o.community).toLowerCase();
+    const matchesSearch = !activeSearch || haystack.includes(activeSearch);
+    return matchesLanguage && matchesSearch;
+  });
+
+  countEl.textContent = `${filtered.length} organization${filtered.length === 1 ? "" : "s"}`;
+  gridEl.innerHTML = "";
+  emptyEl.style.display = filtered.length === 0 ? "block" : "none";
+
+  filtered.forEach(o => {
+    const card = document.createElement("article");
+    card.className = "card";
+    card.innerHTML = `
+      <h3>${o.name}</h3>
+      <div class="services">${o.services}</div>
+      <div class="field"><strong>Location:</strong> ${o.location}</div>
+      <div class="field"><strong>Languages:</strong> ${o.languages.join(", ")}</div>
+      <a class="website" href="${o.website}" target="_blank" rel="noopener">Visit website →</a>
+    `;
+    gridEl.appendChild(card);
+  });
+}
+
+render();
+</script>
+</body>
+</html>
