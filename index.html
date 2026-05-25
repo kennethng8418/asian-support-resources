@@ -104,18 +104,23 @@
   }
   .card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(45, 36, 32, 0.08); }
   .card h3 { margin: 0 0 10px; font-size: 1.2rem; color: var(--ink); }
-  .card .community {
+  .type-tag {
     display: inline-block;
-    background: var(--accent-soft);
-    color: var(--accent);
     font-size: 0.78rem;
-    font-weight: 600;
-    padding: 3px 10px;
+    font-weight: 700;
+    padding: 4px 11px;
     border-radius: 999px;
     margin-bottom: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
+    background: var(--accent-soft);
+    color: var(--accent);
   }
+  .type-tag[data-type="Outpatient clinic"] { background: #dcebe4; color: #2f6b4f; }
+  .type-tag[data-type="Inpatient care"] { background: #f3ddd9; color: #a23b2c; }
+  .type-tag[data-type="Community support"] { background: #e4e0f0; color: #574b8a; }
+  .type-tag[data-type="Therapist directory"] { background: #f0e7d2; color: #897230; }
+  .type-tag[data-type="Advocacy & referral"] { background: #d9e6ef; color: #366480; }
   .card .field { font-size: 0.98rem; margin: 8px 0; color: var(--ink-soft); }
   .card .field strong { color: var(--ink); font-weight: 600; }
   .card .services { font-size: 1rem; color: var(--ink); margin: 12px 0; }
@@ -190,20 +195,25 @@
 
 <script>
 const organizations = [
-  { name: "Hamilton-Madison House", community: "Pan-Asian / AAPI", location: "Lower East Side, Manhattan", services: "Licensed outpatient mental health clinic; East Coast's largest specializing in Asian American community; culturally competent therapy & psychiatry.", languages: ["English", "Mandarin", "Cantonese", "Japanese", "Korean", "Vietnamese", "Russian", "Spanish", "Ukrainian"], website: "https://hamiltonmadisonhouse.org" },
-  { name: "Charles B. Wang Community Health Center", community: "Pan-Asian (primarily Chinese)", location: "Manhattan Chinatown; Flushing, Queens", services: "Mental health integrated with primary care at FQHC; sliding fee scale.", languages: ["English", "Chinese"], website: "https://www.cbwchc.org" },
-  { name: "Apicha Community Health Center", community: "Asian, Pacific Islander, people of color; LGBTQ+ focus", location: "Manhattan", services: "FQHC offering mental health, primary care, HIV services, supportive services.", languages: ["English", "Mandarin", "Cantonese", "Spanish"], website: "https://www.apicha.org" },
-  { name: "Garden of Hope", community: "Chinese-speaking", location: "Queens, Manhattan, Brooklyn", services: "Counseling, case management, and support services for survivors of domestic violence, sexual assault, and human trafficking.", languages: ["English", "Mandarin", "Cantonese"], website: "https://www.gohny.org" },
-  { name: "Chinese-American Planning Council (CPC)", community: "Chinese American", location: "Manhattan, Brooklyn, Queens", services: "Social services, wellness programs, and senior and youth programming. May offer or refer to mental health support — confirm directly.", languages: ["English", "Mandarin", "Cantonese"], website: "https://www.cpc-nyc.org" },
-  { name: "Womankind (formerly New York Asian Women's Center)", community: "Pan-Asian (gender-based violence survivors)", location: "Multiple boroughs", services: "Supportive counseling, legal services, shelter, and trauma support for survivors of gender-based violence (domestic violence, trafficking, sexual violence).", languages: ["English", "Mandarin", "Cantonese", "Korean", "Japanese", "Bengali", "Hindi", "Urdu", "Thai", "Vietnamese"], website: "https://www.iamwomankind.org" },
-  { name: "Korean American Family Service Center (KAFSC)", community: "Korean American", location: "Flushing, Queens", services: "Counseling, domestic violence support, and youth and family programs.", languages: ["English", "Korean"], website: "https://www.kafsc.org" },
-  { name: "Korean Community Services of Metropolitan NY (KCS)", community: "Korean American", location: "Queens (Flushing, Bayside) and Manhattan", services: "Mental health clinic, senior services, public health programs.", languages: ["English", "Korean"], website: "https://www.kcsny.org" },
-  { name: "Sakhi for South Asian Survivors", community: "South Asian", location: "NYC-wide", services: "Counseling, advocacy, and support services for South Asian survivors of gender-based violence.", languages: ["English", "Hindi", "Urdu", "Bengali", "Punjabi", "Tamil", "Telugu", "Gujarati"], website: "https://www.sakhi.org" },
-  { name: "South Asian Council for Social Services (SACSS)", community: "South Asian", location: "Queens", services: "Social services including mental health referrals and wellness programs.", languages: ["English", "Hindi", "Urdu", "Bengali", "Punjabi", "Nepali"], website: "https://www.sacssny.org" },
-  { name: "The Child Center of NY — Asian Outreach Program (APOP)", community: "Asian children & families", location: "Queens", services: "Mental health and substance abuse services for Asian youth and families.", languages: ["English", "Mandarin", "Cantonese", "Korean", "Bengali", "Hindi"], website: "https://childcenterny.org" },
-  { name: "Damayan Migrant Workers Association", community: "Filipino", location: "NYC-wide", services: "Wellness, peer support, and trafficking survivor support.", languages: ["English", "Tagalog"], website: "https://www.damayanmigrants.org" },
-  { name: "National Queer Asian Pacific Islander Alliance (NQAPIA)", community: "LGBTQ+ Asian / Pacific Islander", location: "National with NYC presence", services: "Advocacy and resource connection for LGBTQ+ AAPI individuals.", languages: ["English"], website: "https://www.nqapia.org" },
-  { name: "Asian Mental Health Collective", community: "Pan-Asian", location: "National (with NYC therapist directory)", services: "Therapist directory, peer programs, community support.", languages: ["American Sign Language (ASL)", "Arabic", "Armenian", "Bengali", "Burmese", "Cambodian", "Cantonese", "English", "Farsi", "Filipino", "French", "Gujarati", "Hindi", "Hmong", "Indonesian", "Japanese", "Korean", "Malay", "Mandarin", "Mongolian", "Punjabi", "Russian", "Sinhalese", "Spanish", "Tamil", "Telugu", "Teochew", "Thai", "Turkish", "Ukrainian", "Urdu", "Vietnamese"], website: "https://www.asianmhc.org" }
+  { name: "Hamilton-Madison House (Behavioral Health)", type: "Outpatient clinic", community: "Pan-Asian / AAPI", location: "Lower East Side, Manhattan", services: "Licensed outpatient mental health clinic; East Coast's largest specializing in Asian American community; culturally competent therapy & psychiatry. Also offers Asian American Recovery Services (addiction) and CONNECT community outreach.", languages: ["English", "Mandarin", "Cantonese", "Japanese", "Korean", "Vietnamese", "Russian", "Spanish", "Ukrainian"], website: "https://hamiltonmadisonhouse.org" },
+  { name: "Charles B. Wang Community Health Center", type: "Outpatient clinic", community: "Pan-Asian (primarily Chinese)", location: "Manhattan Chinatown; Flushing, Queens", services: "Mental health integrated with primary care at FQHC; sliding fee scale. Must be an existing primary care patient for a referral.", languages: ["English", "Mandarin", "Cantonese", "Taishanese", "Shanghainese", "Hokkien", "Korean", "Japanese", "Vietnamese"], website: "https://www.cbwchc.org" },
+  { name: "Apicha Community Health Center", type: "Outpatient clinic", community: "Asian, Pacific Islander, people of color; LGBTQ+ focus", location: "Manhattan", services: "FQHC offering mental health, primary care, HIV services, supportive services.", languages: ["English", "Mandarin", "Cantonese", "Spanish"], website: "https://www.apicha.org" },
+  { name: "Henry Street Settlement — Community Consultation Center", type: "Outpatient clinic", community: "Asian (especially Chinese); Lower East Side", location: "40 Montgomery Street, Lower East Side, Manhattan", services: "NY State-certified outpatient mental health clinic. Asian Bicultural Mental Health Services offer culturally tailored therapy, psychiatry, crisis services, and PROS. Accepts Medicaid/Medicare/insurance with sliding scale.", languages: ["English", "Mandarin", "Cantonese", "Hindi", "Spanish"], website: "https://www.henrystreet.org/programs/primary-behaviorial-health/mental-health-services/asian-bicultural-mental-health-services/" },
+  { name: "NYC Health + Hospitals/Gouverneur — Asian Bicultural Center", type: "Outpatient clinic", community: "Chinese American", location: "227 Madison Street, Lower East Side, Manhattan", services: "Public hospital behavioral health clinic. Asian Bicultural Center geared toward Chinese Americans; individual, group, and family psychotherapy and medication therapy. Free interpretation; sliding scale.", languages: ["English", "Mandarin", "Cantonese", "Spanish"], website: "https://www.nychealthandhospitals.org/gotham-health/gouverneur/services/behavioral-health/" },
+  { name: "NYC Health + Hospitals/Elmhurst — Asian Mental Health Program", type: "Outpatient clinic", community: "Pan-Asian", location: "Elmhurst, Queens", services: "Public hospital Asian mental health program. Accepts Medicaid, Medicare, and sliding fee.", languages: ["English", "Cantonese", "Korean", "Mandarin"], website: "https://www.nychealthandhospitals.org/elmhurst/" },
+  { name: "Gracie Square Hospital — Asian Psychiatry Program", type: "Inpatient care", community: "Chinese, Korean, Japanese & other Asian communities", location: "Upper East Side, Manhattan", services: "Inpatient psychiatric care with culturally sensitive treatment. Usually accessed through crisis or referral, not walk-in.", languages: ["English", "Mandarin", "Cantonese", "Chinese dialects", "Korean", "Japanese"], website: "https://www.nygsh.org/asian-psychiatry.html" },
+  { name: "Garden of Hope", type: "Community support", community: "Chinese-speaking", location: "Queens, Manhattan, Brooklyn", services: "Counseling, case management, and support services for survivors of domestic violence, sexual assault, and human trafficking.", languages: ["English", "Mandarin", "Cantonese"], website: "https://www.gohny.org" },
+  { name: "Chinese-American Planning Council (CPC)", type: "Community support", community: "Chinese American", location: "Manhattan, Brooklyn, Queens", services: "Social services, wellness programs, and senior and youth programming. May offer or refer to mental health support — confirm directly.", languages: ["English", "Mandarin", "Cantonese"], website: "https://www.cpc-nyc.org" },
+  { name: "Womankind (formerly New York Asian Women's Center)", type: "Community support", community: "Pan-Asian (gender-based violence survivors)", location: "Multiple boroughs", services: "Supportive counseling, legal services, shelter, and trauma support for survivors of gender-based violence (domestic violence, trafficking, sexual violence).", languages: ["English", "Mandarin", "Cantonese", "Korean", "Japanese", "Bengali", "Hindi", "Urdu", "Thai", "Vietnamese"], website: "https://www.iamwomankind.org" },
+  { name: "Korean American Family Service Center (KAFSC)", type: "Community support", community: "Korean American", location: "Flushing, Queens", services: "Counseling, domestic violence support, and youth and family programs.", languages: ["English", "Korean"], website: "https://www.kafsc.org" },
+  { name: "Korean Community Services of Metropolitan NY (KCS)", type: "Outpatient clinic", community: "Korean American", location: "Queens (Flushing, Bayside) and Manhattan", services: "Mental health clinic, senior services, public health programs.", languages: ["English", "Korean"], website: "https://www.kcsny.org" },
+  { name: "Sakhi for South Asian Survivors", type: "Community support", community: "South Asian", location: "NYC-wide", services: "Counseling, advocacy, and support services for South Asian survivors of gender-based violence.", languages: ["English", "Hindi", "Urdu", "Bengali", "Punjabi", "Tamil", "Telugu", "Gujarati"], website: "https://www.sakhi.org" },
+  { name: "Sapna NYC", type: "Community support", community: "South Asian women", location: "Bronx", services: "Mental health support for South Asian women: one-on-one counseling sessions, workshops on destigmatizing mental health, and women's support circles.", languages: ["English", "Bengali", "Hindi", "Urdu"], website: "https://www.sapnanyc.org" },
+  { name: "South Asian Council for Social Services (SACSS)", type: "Community support", community: "South Asian", location: "Queens", services: "Social services including mental health referrals and wellness programs.", languages: ["English", "Hindi", "Urdu", "Bengali", "Punjabi", "Nepali"], website: "https://www.sacssny.org" },
+  { name: "The Child Center of NY — Asian Outreach Program (APOP)", type: "Outpatient clinic", community: "Asian children & families", location: "Queens", services: "Outpatient counseling for mental health and substance use, plus psychiatric care, for Asian children and families. Bilingual, bicultural therapists.", languages: ["English", "Mandarin", "Cantonese", "Korean", "Bengali", "Hindi"], website: "https://childcenterny.org" },
+  { name: "Damayan Migrant Workers Association", type: "Community support", community: "Filipino", location: "NYC-wide", services: "Wellness, peer support, and trafficking survivor support.", languages: ["English", "Tagalog"], website: "https://www.damayanmigrants.org" },
+  { name: "National Queer Asian Pacific Islander Alliance (NQAPIA)", type: "Advocacy & referral", community: "LGBTQ+ Asian / Pacific Islander", location: "National with NYC presence", services: "Advocacy and resource connection for LGBTQ+ AAPI individuals.", languages: ["English"], website: "https://www.nqapia.org" },
+  { name: "Asian Mental Health Collective", type: "Therapist directory", community: "Pan-Asian", location: "National (with NYC therapist directory)", services: "Therapist directory, peer programs, community support.", languages: ["American Sign Language (ASL)", "Arabic", "Armenian", "Bengali", "Burmese", "Cambodian", "Cantonese", "English", "Farsi", "Filipino", "French", "Gujarati", "Hindi", "Hmong", "Indonesian", "Japanese", "Korean", "Malay", "Mandarin", "Mongolian", "Punjabi", "Russian", "Sinhalese", "Spanish", "Tamil", "Telugu", "Teochew", "Thai", "Turkish", "Ukrainian", "Urdu", "Vietnamese"], website: "https://www.asianmhc.org" }
 ];
 
 // Build sorted list of unique languages, with English first, "Other Asian languages" last
@@ -246,6 +256,7 @@ function render() {
     const card = document.createElement("article");
     card.className = "card";
     card.innerHTML = `
+      <span class="type-tag" data-type="${o.type}">${o.type}</span>
       <h3>${o.name}</h3>
       <div class="services">${o.services}</div>
       <div class="field"><strong>Location:</strong> ${o.location}</div>
