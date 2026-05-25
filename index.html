@@ -185,9 +185,10 @@
 <main class="container">
 
   <div class="controls">
-    <div class="filter-wrap" id="serviceFilters">
-      <span class="filter-label">Filter by service:</span>
-    </div>
+    <button class="filter-toggle" id="serviceToggle" aria-expanded="true" aria-controls="serviceFilters">
+      Filter by service <span class="chevron">▾</span>
+    </button>
+    <div class="filter-wrap" id="serviceFilters"></div>
     <div class="filter-divider"></div>
     <button class="filter-toggle" id="langToggle" aria-expanded="false" aria-controls="langFilters">
       Filter by language <span class="chevron">▾</span>
@@ -273,6 +274,13 @@ const langToggle = document.getElementById("langToggle");
 langToggle.addEventListener("click", () => {
   const isCollapsed = langFiltersEl.classList.toggle("collapsed");
   langToggle.setAttribute("aria-expanded", String(!isCollapsed));
+});
+
+// Collapsible service filter toggle
+const serviceToggle = document.getElementById("serviceToggle");
+serviceToggle.addEventListener("click", () => {
+  const isCollapsed = serviceFiltersEl.classList.toggle("collapsed");
+  serviceToggle.setAttribute("aria-expanded", String(!isCollapsed));
 });
 
 // Service-type filter pills
